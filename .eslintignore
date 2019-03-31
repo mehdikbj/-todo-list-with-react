@@ -1,0 +1,6 @@
+.dist
+.git
+build
+node_modules
+**/*.test.js
+coverage

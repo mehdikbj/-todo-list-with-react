@@ -1,0 +1,70 @@
+{
+  "plugins": ["prettier"],
+  "parser": "babel-eslint",
+  "extends": [
+    "airbnb",
+    "prettier"
+  ],
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "globals": {
+    "__DEV__": true,
+    "__PROD__": true,
+    "__DEBUG__": true,
+    "__COVERAGE__": true,
+    "__BASENAME__": true
+  },
+  "rules": {
+    "arrow-parens": [2, "as-needed"],
+    "camelcase": 0,
+    "comma-dangle": ["error", "always-multiline"],
+    "curly": "error",
+    "func-names": 0,
+    "global-require": 0,
+    "import/no-dynamic-require": 0,
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*.test.js",
+          "features/**",
+          "scripts/**",
+          "stories/**",
+          "storybook/**",
+          "test/**",
+          "razzle.config.js"
+        ]
+      }
+    ],
+    "import/prefer-default-export": 0,
+    "indent": 0,
+    "jsx-a11y/anchor-has-content": 0,
+    "jsx-quotes": [2, "prefer-double"],
+    "max-len": 0,
+    "no-confusing-arrow": 0,
+    "no-console": ["error", { "allow": ["warn", "error", "info"] }],
+    "no-mixed-operators": 0,
+    "no-use-before-define": ["error", { "functions": false }],
+    "no-useless-computed-key": 0,
+    "padded-blocks": 0,
+    "react/forbid-prop-types": 0,
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-indent": 0,
+    "react/jsx-wrap-multilines": 0,
+    "react/no-array-index-key": 0, // TODO: fix code and remove rule exception
+    "react/no-danger": 0,
+    "react/require-default-props": 0, // TODO: fix code and remove rule exception
+    "semi": [2, "never"],
+    "space-before-function-paren": 0,
+    "prettier/prettier": "error"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": ["src", "node_modules"]
+      }
+    }
+  }
+}
