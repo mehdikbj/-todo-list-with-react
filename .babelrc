@@ -1,0 +1,8 @@
+{
+  "presets": ["babel-preset-razzle"],
+  "plugins": [
+    ["styled-components", {
+      "ssr": true
+    }]
+  ]
+}

@@ -1,24 +1,41 @@
 import React from 'react'
-import logo from './logo.svg'
-import './App.css'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import FormAddItem from './components/formAddItem'
+import Heading from './components/common/Heading'
+import ListItems from './components/listItems'
+import actions from './store/listItem/actions'
 
-const App = () => (
-  <div className="App">
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <p>
-        Edit <code>src/App.js</code> and save to reload.
-      </p>
-      <a
-        className="App-link"
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Learn React
-      </a>
-    </header>
+const App = ({ addDescription, listItems, deleteDescription }) => (
+  <div>
+    <Heading title="To-Do List" size="h1" />
+    <FormAddItem addDescription={addDescription} />
+    <ListItems listItems={listItems} deleteItem={deleteDescription} />
   </div>
 )
 
-export default App
+App.propTypes = {
+  addDescription: PropTypes.func.isRequired,
+  listItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      description: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  deleteDescription: PropTypes.func.isRequired,
+}
+
+const mapStateToProps = state => state.listDescription
+
+const mapDispatchToProps = dispatch => ({
+  addDescription: description =>
+    description ? dispatch(actions.addDescription(description)) : null,
+  deleteDescription: id => {
+    dispatch(actions.deleteDescription(id))
+  },
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(App)
